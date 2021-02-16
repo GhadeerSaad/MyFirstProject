@@ -1,0 +1,46 @@
+/* Query 1 */
+
+SELECT a.Name As ArtistName, COUNT(al.Title) AS Number_Of_Album 
+FROM Artist a JOIN Album al
+ON a.ArtistId = al.ArtistId
+WHERE al.Title > 3
+GROUP BY a.Name
+ORDER BY Number_Of_Album DESC
+LIMIT 10;
+
+
+/* Query 2 */
+
+SELECT c.FirstName AS First_Name, c.City AS City_Name, SUM(i.Total) AS Total_invoices
+FROM Customer c JOIN Invoice i
+ON i.CustomerId = c.CustomerId
+GROUP BY c.FirstName
+ORDER BY Total_invoices DESC
+LIMIT 5;
+
+
+/* Qyery 3 */
+
+SELECT mt.Name As MediaName, min(t.Bytes) min_Of_Bytes
+FROM MediaType mt
+JOIN Track t 
+ON mt.MediaTypeId = t.MediaTypeId
+GROUP BY mt.Name
+ORDER BY min_Of_Bytes ASC;
+
+
+/* Query 4 */
+
+SELECT al.Title As AlbumName, count(t.Name) As Number_Of_Songs
+FROM Album al
+JOIN Track t 
+ON al.AlbumId = t.AlbumId
+GROUP BY al.Title
+ORDER BY Number_Of_Songs DESC
+LIMIT 10;
+
+
+
+
+
+
